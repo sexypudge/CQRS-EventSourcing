@@ -25,7 +25,7 @@ public class CreateProductCommandInterceptor implements MessageDispatchIntercept
     public BiFunction<Integer, CommandMessage<?>, CommandMessage<?>>
     handle(@Nonnull List<? extends CommandMessage<?>> messages) {
         return (index, command) -> {
-            LOGGER.info("Interceptor cmd: " + command.getPayloadType());
+            LOGGER.info("Interceptor cmd: {}", command.getPayloadType());
             if (CreateProductCommand.class.equals(command.getPayloadType())) {
                 CreateProductCommand cmd = (CreateProductCommand) command.getPayload();
                 ProductLookupEntity productLookupEntity = productLookupRepository.findByProductIdOrTitle(cmd.getProductId(), cmd.getTitle());

@@ -28,28 +28,13 @@ public class ProductCommandController {
                 .productId(UUID.randomUUID().toString())
                 .build();
 
-        String returnValue;
-        try {
-            returnValue = commandGateway.sendAndWait(command);
-        } catch (Exception e) {
-            returnValue = e.getLocalizedMessage();
-        }
+//        String returnValue;
+//        try {
+//            returnValue = commandGateway.sendAndWait(command);
+//        } catch (Exception e) {
+//            returnValue = e.getLocalizedMessage();
+//        }
 
-        return returnValue;
+        return commandGateway.sendAndWait(command);
     }
-
-//    @GetMapping
-//    public String getProduct() {
-//        return "HTTP GET HANDLED " + env.getProperty("local.server.port"); // not "server.port" because "server.port = 0" in application.properties
-//    }
-//
-//    @PutMapping
-//    public String updateProduct() {
-//        return "HTTP UPDATE HANDLED ";
-//    }
-//
-//    @DeleteMapping
-//    public String deleteProduct() {
-//        return "HTTP DELETE HANDLED ";
-//    }
 }
